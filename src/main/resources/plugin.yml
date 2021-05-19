@@ -1,0 +1,7 @@
+name: MumbleLink
+version: @version@
+main: dev.azn9.mumblelink.MumbleLink
+author: Azn9
+commands:
+  mumble:
+    description: Plugin's main command

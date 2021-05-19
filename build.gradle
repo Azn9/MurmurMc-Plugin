@@ -1,0 +1,32 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+plugins {
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+    id 'java'
+}
+
+group = 'dev.azn9'
+version = '1.0-SNAPSHOT'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url = 'https://nexus.azn9.dev/repository/public-snapshots/'
+    }
+}
+
+dependencies {
+    compile "io.projectreactor:reactor-core:3.4.5"
+
+    compileOnly 'com.destroystokyo.paper:paper:1.8.8-R0.1-SNAPSHOT'
+}
+
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        filter ReplaceTokens, tokens: [version: version]
+    }
+}
